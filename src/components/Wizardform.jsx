@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 
 export default function WizardForm (props) {
@@ -10,6 +10,19 @@ export default function WizardForm (props) {
     const [name, setName] = useState('');
     const [occupation, setOccupation] = useState('')
     const [house, setHouse] = useState('')
+
+    useEffect(() => {console.log('changes');
+    if (props.wizard.name) {
+        setName(props.wizard.name);
+        setOccupation(props.wizard.occupation);
+        setHouse(props.wizard.house);
+    }
+}, [props])
+
+useEffect(() => {
+    console.log('you just changed the name')
+}, [name]);
+    
     return (
         
         <section>
